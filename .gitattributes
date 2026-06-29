@@ -1,0 +1,12 @@
+# Normalize line endings. Keep shell scripts LF so they run on Linux/macOS hosts.
+* text=auto eol=lf
+*.sh text eol=lf
+*.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+*.mo binary

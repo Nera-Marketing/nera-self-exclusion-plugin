@@ -1,2 +1,5 @@
+/node_modules/
+/nera-self-exclusion-plugin-*.zip
 .DS_Store
 *.log
+*.bak

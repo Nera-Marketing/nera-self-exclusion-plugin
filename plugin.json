@@ -1,0 +1,23 @@
+{
+	"name": "Nera – Self-Exclusion",
+	"slug": "nera-self-exclusion",
+	"version": "1.0.1",
+	"homepage": "https://github.com/Nera-Marketing/nera-self-exclusion-plugin",
+	"download_url": "https://github.com/Nera-Marketing/nera-self-exclusion-plugin/releases/download/v1.0.1/nera-self-exclusion-plugin-1.0.1.zip",
+
+	"author": "Nera",
+	"author_homepage": "https://github.com/Nera-Marketing",
+
+	"requires": "6.0",
+	"tested": "6.8",
+	"requires_php": "7.4",
+	"last_updated": "2026-06-29 07:13:06",
+
+	"upgrade_notice": "Initial release.",
+
+	"sections": {
+		"description": "<p>Lets players take a break (pause), suspend, or permanently close their account per the responsible-gambling voluntary code. Blocks competition entries and login while excluded, auto-reactivates timed breaks, and gives admins a self-exclusion management view.</p>",
+		"installation": "<p>Install and activate the plugin. Players manage their self-exclusion from the Account area; admins review exclusions from the self-exclusion management view.</p>",
+		"changelog": "<p>Release notes: <a href=\"https://github.com/Nera-Marketing/nera-self-exclusion-plugin/releases\">GitHub releases</a>.</p>"
+	}
+}
