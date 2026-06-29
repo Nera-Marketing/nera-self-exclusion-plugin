@@ -1,0 +1,64 @@
+/**
+ * Nera Self-Exclusion — wp-admin styles.
+ *
+ * Plain CSS only (no build step). Loaded on Users list and SE management page.
+ * Intentionally uses explicit hex values — admin is outside the theme token system.
+ */
+
+/* ------------------------------------------------------------------
+   Status badge pill
+   ------------------------------------------------------------------ */
+
+.nera-se-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	line-height: 1.6;
+	white-space: nowrap;
+}
+
+/* Paused — amber */
+.nera-se-badge--paused {
+	background-color: #fef3c7;
+	color: #92400e;
+}
+
+/* Suspended — blue */
+.nera-se-badge--suspended {
+	background-color: #dbeafe;
+	color: #1e40af;
+}
+
+/* Closed — red */
+.nera-se-badge--closed {
+	background-color: #fee2e2;
+	color: #991b1b;
+}
+
+/* ------------------------------------------------------------------
+   Reinstate action link
+   ------------------------------------------------------------------ */
+
+.nera-se-reinstate {
+	color: #2271b1;
+	text-decoration: none;
+}
+
+.nera-se-reinstate:hover {
+	color: #135e96;
+	text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------
+   Permanent label (closed accounts — no reinstate available)
+   ------------------------------------------------------------------ */
+
+.nera-se-permanent {
+	color: #8c8f94;
+	font-style: italic;
+	font-size: 12px;
+}

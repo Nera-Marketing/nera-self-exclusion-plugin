@@ -1,0 +1,456 @@
+/**
+ * Nera Self-Exclusion — frontend styles.
+ *
+ * Self-contained, no build step, no @import.
+ * All selectors namespaced under .nera-se*.
+ * Colour values use theme tokens with hard-coded fallbacks so the styles
+ * degrade gracefully on any site.
+ */
+
+/* ================================================================
+   Root wrapper
+   ================================================================ */
+.nera-se {
+	max-width: 680px;
+}
+
+/* ================================================================
+   Intro block
+   ================================================================ */
+.nera-se__intro {
+	margin-bottom: 2rem;
+}
+.nera-se__intro-heading {
+	font-size: 1.35rem;
+	font-weight: 800;
+	color: var(--color-text-primary, #0d0d1b);
+	margin: 0 0 0.5rem;
+	letter-spacing: -0.01em;
+}
+.nera-se__intro-copy {
+	font-size: 0.95rem;
+	color: var(--color-text-secondary, #4b5563);
+	margin: 0;
+	line-height: 1.65;
+}
+
+/* ================================================================
+   Cards
+   ================================================================ */
+.nera-se__card {
+	background: var(--color-surface, #ffffff);
+	border: 1px solid var(--color-gray-200, #e5e7eb);
+	border-radius: 1.25rem;
+	padding: 1.5rem;
+	margin-bottom: 1.5rem;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05), 0 6px 20px -10px rgba(0, 0, 0, 0.08);
+}
+.nera-se__card:last-child {
+	margin-bottom: 0;
+}
+
+/* Danger variant (close form) */
+.nera-se__card--danger {
+	border-color: var(--color-danger, #dc2626);
+	border-width: 2px;
+	background: color-mix(in srgb, var(--color-danger, #dc2626) 4%, #fff);
+}
+
+/* ================================================================
+   Card header (icon + title + subtitle)
+   ================================================================ */
+.nera-se__card-header {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.9rem;
+	margin-bottom: 1.25rem;
+	padding-bottom: 1.25rem;
+	border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+}
+.nera-se__card--danger .nera-se__card-header {
+	border-bottom-color: color-mix(in srgb, var(--color-danger, #dc2626) 25%, #e5e7eb);
+}
+.nera-se__card-icon {
+	font-size: 1.75rem;
+	color: var(--color-primary, #1313ec);
+	flex-shrink: 0;
+	margin-top: 0.1rem;
+}
+.nera-se__card--danger .nera-se__card-icon {
+	color: var(--color-danger, #dc2626);
+}
+.nera-se__card-title {
+	margin: 0 0 0.2rem;
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--color-text-primary, #0d0d1b);
+}
+.nera-se__card-subtitle {
+	margin: 0;
+	font-size: 0.875rem;
+	color: var(--color-text-secondary, #4b5563);
+	line-height: 1.5;
+}
+
+/* ================================================================
+   Irreversible warning banner (close card)
+   ================================================================ */
+.nera-se__warning {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+	background: color-mix(in srgb, var(--color-danger, #dc2626) 8%, #fff);
+	border: 1px solid color-mix(in srgb, var(--color-danger, #dc2626) 30%, transparent);
+	border-radius: 0.75rem;
+	padding: 1rem 1.1rem;
+	margin-bottom: 1.25rem;
+}
+.nera-se__warning-icon {
+	color: var(--color-danger, #dc2626);
+	font-size: 1.4rem;
+	flex-shrink: 0;
+	margin-top: 0.1rem;
+}
+.nera-se__warning strong {
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--color-danger, #dc2626);
+	margin-bottom: 0.35rem;
+}
+.nera-se__warning p {
+	margin: 0;
+	font-size: 0.875rem;
+	color: var(--color-text-secondary, #4b5563);
+	line-height: 1.55;
+}
+
+/* ================================================================
+   Fieldset / legend
+   ================================================================ */
+.nera-se__fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+.nera-se__legend {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--color-text-primary, #0d0d1b);
+	margin-bottom: 0.85rem;
+	padding: 0;
+}
+
+/* ================================================================
+   Radio pills (preset duration selector)
+   ================================================================ */
+.nera-se__radio-pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 1.1rem;
+}
+
+/* Hide the native radio — keep it accessible */
+.nera-se__pill-radio {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+.nera-se__pill {
+	display: inline-flex;
+	cursor: pointer;
+}
+.nera-se__pill-label {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.45rem 1rem;
+	border: 2px solid var(--color-gray-200, #e5e7eb);
+	border-radius: 9999px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--color-text-primary, #0d0d1b);
+	background: var(--color-surface, #fff);
+	transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+	user-select: none;
+}
+.nera-se__pill:hover .nera-se__pill-label {
+	border-color: var(--color-primary, #1313ec);
+	color: var(--color-primary, #1313ec);
+}
+.nera-se__pill-radio:checked + .nera-se__pill-label {
+	background: var(--color-primary, #1313ec);
+	border-color: var(--color-primary, #1313ec);
+	color: #fff;
+	box-shadow: 0 4px 12px -4px rgba(19, 19, 236, 0.45);
+}
+.nera-se__pill-radio:focus-visible + .nera-se__pill-label {
+	outline: 3px solid var(--color-primary, #1313ec);
+	outline-offset: 2px;
+}
+
+/* ================================================================
+   Custom number input (pause only)
+   ================================================================ */
+.nera-se__custom-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: 0.25rem;
+}
+.nera-se__custom-label {
+	font-size: 0.8rem;
+	color: var(--color-text-secondary, #4b5563);
+	flex-shrink: 0;
+}
+.nera-se__custom-input {
+	width: 7rem;
+	padding: 0.5rem 0.75rem;
+	border: 2px solid var(--color-gray-200, #e5e7eb);
+	border-radius: 0.65rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--color-text-primary, #0d0d1b);
+	background: var(--color-surface, #fff);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+	-moz-appearance: textfield;
+}
+.nera-se__custom-input::-webkit-inner-spin-button,
+.nera-se__custom-input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.nera-se__custom-input:focus {
+	outline: 0;
+	border-color: var(--color-primary, #1313ec);
+	box-shadow: 0 0 0 3px rgba(19, 19, 236, 0.12);
+}
+
+/* ================================================================
+   Close-form confirm fields
+   ================================================================ */
+.nera-se__confirm-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	margin-bottom: 1.25rem;
+}
+
+/* Checkbox row */
+.nera-se__check-label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.65rem;
+	cursor: pointer;
+	font-size: 0.9rem;
+	color: var(--color-text-primary, #0d0d1b);
+	line-height: 1.5;
+}
+.nera-se__confirm-checkbox {
+	flex-shrink: 0;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-top: 0.15rem;
+	accent-color: var(--color-danger, #dc2626);
+	cursor: pointer;
+}
+
+/* Text input */
+.nera-se__confirm-text-label {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--color-text-primary, #0d0d1b);
+}
+.nera-se__confirm-text-input {
+	width: 100%;
+	max-width: 14rem;
+	padding: 0.6rem 0.85rem;
+	border: 2px solid var(--color-gray-200, #e5e7eb);
+	border-radius: 0.65rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--color-text-primary, #0d0d1b);
+	background: var(--color-surface, #fff);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.nera-se__confirm-text-input:focus {
+	outline: 0;
+	border-color: var(--color-danger, #dc2626);
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+/* ================================================================
+   Submit buttons
+   ================================================================ */
+.nera-se__submit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	padding: 0.75rem 1.5rem;
+	border: none;
+	border-radius: 0.85rem;
+	font-size: 0.95rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: opacity 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+	margin-top: 1rem;
+}
+.nera-se__submit:active:not(:disabled) {
+	transform: translateY(1px) scale(0.99);
+}
+
+/* Pause */
+.nera-se__submit--pause {
+	background: var(--color-primary, #1313ec);
+	color: #fff;
+	box-shadow: 0 6px 18px -6px rgba(19, 19, 236, 0.45);
+}
+.nera-se__submit--pause:hover:not(:disabled) {
+	opacity: 0.88;
+	box-shadow: 0 10px 24px -6px rgba(19, 19, 236, 0.55);
+}
+
+/* Suspend */
+.nera-se__submit--suspend {
+	background: var(--color-secondary, #2563eb);
+	color: #fff;
+	box-shadow: 0 6px 18px -6px rgba(37, 99, 235, 0.45);
+}
+.nera-se__submit--suspend:hover:not(:disabled) {
+	opacity: 0.88;
+	box-shadow: 0 10px 24px -6px rgba(37, 99, 235, 0.55);
+}
+/* Fallback: if --color-secondary is not set, use a slightly different shade of primary */
+@supports not (color: var(--color-secondary)) {
+	.nera-se__submit--suspend {
+		background: #2563eb;
+	}
+}
+
+/* Close / danger */
+.nera-se__submit--close {
+	background: linear-gradient(135deg, var(--color-danger, #dc2626), #b91c1c);
+	color: #fff;
+	box-shadow: 0 6px 18px -6px rgba(185, 28, 28, 0.45);
+}
+.nera-se__submit--close:hover:not(:disabled) {
+	opacity: 0.9;
+	box-shadow: 0 10px 24px -6px rgba(185, 28, 28, 0.55);
+}
+
+/* Disabled state (close submit until conditions met) */
+.nera-se__submit:disabled,
+.nera-se__submit[aria-disabled="true"] {
+	opacity: 0.4;
+	cursor: not-allowed;
+	box-shadow: none;
+	pointer-events: none;
+}
+
+/* ================================================================
+   STATUS PANEL (Mode A — already excluded)
+   ================================================================ */
+.nera-se__status {
+	display: flex;
+	gap: 1.1rem;
+	align-items: flex-start;
+	background: var(--color-surface, #fff);
+	border: 2px solid var(--color-gray-200, #e5e7eb);
+	border-radius: 1.25rem;
+	padding: 1.5rem;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Status-specific accent colours */
+.nera-se__status--paused {
+	border-color: var(--color-primary, #1313ec);
+	background: color-mix(in srgb, var(--color-primary, #1313ec) 5%, #fff);
+}
+.nera-se__status--suspended {
+	border-color: var(--color-warning, #d97706);
+	background: color-mix(in srgb, var(--color-warning, #d97706) 5%, #fff);
+}
+.nera-se__status--closed {
+	border-color: var(--color-danger, #dc2626);
+	background: color-mix(in srgb, var(--color-danger, #dc2626) 5%, #fff);
+}
+
+.nera-se__status-icon {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 9999px;
+	background: var(--color-primary, #1313ec);
+	color: #fff;
+}
+.nera-se__status-icon .material-symbols-outlined {
+	font-size: 1.5rem;
+}
+.nera-se__status--suspended .nera-se__status-icon {
+	background: var(--color-warning, #d97706);
+}
+.nera-se__status--closed .nera-se__status-icon {
+	background: var(--color-danger, #dc2626);
+}
+
+.nera-se__status-body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.nera-se__status-heading {
+	margin: 0 0 0.5rem;
+	font-size: 1.15rem;
+	font-weight: 800;
+	color: var(--color-text-primary, #0d0d1b);
+	letter-spacing: -0.01em;
+}
+.nera-se__status-message {
+	margin: 0 0 0.4rem;
+	font-size: 0.95rem;
+	color: var(--color-text-primary, #0d0d1b);
+	line-height: 1.55;
+}
+.nera-se__status-note,
+.nera-se__status-help {
+	margin: 0;
+	font-size: 0.875rem;
+	color: var(--color-text-secondary, #4b5563);
+	line-height: 1.55;
+}
+
+/* ================================================================
+   Responsive: stack on small screens
+   ================================================================ */
+@media (max-width: 480px) {
+	.nera-se__status {
+		flex-direction: column;
+	}
+	.nera-se__submit {
+		width: 100%;
+	}
+	.nera-se__confirm-text-input {
+		max-width: 100%;
+	}
+}
+
+/* ================================================================
+   Accessibility: reduced motion
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+	.nera-se__pill-label,
+	.nera-se__submit,
+	.nera-se__custom-input,
+	.nera-se__confirm-text-input {
+		transition: none;
+	}
+}
