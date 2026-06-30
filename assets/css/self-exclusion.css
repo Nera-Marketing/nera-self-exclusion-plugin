@@ -294,12 +294,14 @@
 	justify-content: center;
 	gap: 0.45rem;
 	padding: 0.75rem 1.5rem;
-	border: none;
 	border-radius: 0.85rem;
 	font-size: 0.95rem;
 	font-weight: 700;
 	cursor: pointer;
-	transition: opacity 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+	/* Transparent border keeps all three buttons the same height; the outline
+	   "Suspend" variant overrides the colour. */
+	border: 2px solid transparent;
+	transition: color 0.15s ease, background 0.15s ease, opacity 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
 	margin-top: 1rem;
 }
 .nera-se__submit:active:not(:disabled) {
@@ -317,21 +319,16 @@
 	box-shadow: 0 10px 24px -6px rgba(19, 19, 236, 0.55);
 }
 
-/* Suspend */
+/* Suspend — same solid primary style as Pause (the theme's --color-secondary is
+   a pale tint, so it is intentionally not used here). */
 .nera-se__submit--suspend {
-	background: var(--color-secondary, #2563eb);
+	background: var(--color-primary, #1313ec);
 	color: #fff;
-	box-shadow: 0 6px 18px -6px rgba(37, 99, 235, 0.45);
+	box-shadow: 0 6px 18px -6px rgba(19, 19, 236, 0.45);
 }
 .nera-se__submit--suspend:hover:not(:disabled) {
 	opacity: 0.88;
-	box-shadow: 0 10px 24px -6px rgba(37, 99, 235, 0.55);
-}
-/* Fallback: if --color-secondary is not set, use a slightly different shade of primary */
-@supports not (color: var(--color-secondary)) {
-	.nera-se__submit--suspend {
-		background: #2563eb;
-	}
+	box-shadow: 0 10px 24px -6px rgba(19, 19, 236, 0.55);
 }
 
 /* Close / danger */

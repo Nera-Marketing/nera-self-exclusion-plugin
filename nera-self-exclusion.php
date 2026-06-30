@@ -3,7 +3,7 @@
  * Plugin Name: Nera – Self-Exclusion
  * Plugin URI: https://github.com/Nera-Marketing/nera-self-exclusion-plugin
  * Description: Lets players take a break (pause), suspend, or permanently close their account per the responsible-gambling voluntary code. Blocks competition entries and login while excluded, auto-reactivates timed breaks, and gives admins a self-exclusion management view.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Nera
  * Text Domain: nera-self-exclusion
  * Domain Path: /languages
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NERA_SE_VERSION', '1.0.1' );
+define( 'NERA_SE_VERSION', '1.0.2' );
 define( 'NERA_SE_PLUGIN_FILE', __FILE__ );
 define( 'NERA_SE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NERA_SE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
